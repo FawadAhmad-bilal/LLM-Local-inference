@@ -1,18 +1,3 @@
-"""
-Local LLM Chat Interface — Streamlit + Ollama
------------------------------------------------
-Task 1 (Arch Technologies, Month 1): a Streamlit frontend that talks to a
-locally hosted LLM served by Ollama.
-
-HOW TO RUN
-1. Install Ollama: https://ollama.com/download
-2. Pull a model, e.g.:      ollama pull tinyllama
-3. Start the Ollama server (usually already running as a service, or):
-                              ollama serve
-4. Install python deps:      pip install streamlit requests
-5. Run the app:               streamlit run app.py
-"""
-
 import requests
 import streamlit as st
 
@@ -47,12 +32,6 @@ def get_available_models() -> list[str]:
 
 
 def query_ollama(prompt: str, model: str) -> str:
-    """Send a prompt to the local Ollama model and return the full response text.
-
-    Uses stream=False for simplicity (waits for the complete answer instead
-    of token-by-token streaming). Swap to stream=True + iterating over
-    response.iter_lines() later if you want a typing effect.
-    """
     try:
         resp = requests.post(
             GENERATE_ENDPOINT,
